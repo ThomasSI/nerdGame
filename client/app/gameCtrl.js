@@ -5,9 +5,14 @@
 
 angular.module("app").controller( "gameCtrl" , function($scope , socket){
 
-  console.log(socket);
 
-  $scope.test = "fdgdgd";
+  //socket.connect();
+
+  socket.emit("join" , {});
+
+  socket.on("new game" , function (gamer) {
+    console.log(gamer);
+  });
 
 
   $scope.awesomeThings = [];
