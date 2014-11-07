@@ -41,10 +41,9 @@ var color = [
 ];
 var gamerIndex = 0;
 
+var gamerList = {};
 
 io.on('connection', function (socket) {
-
-  console.log( "user connect" );
 
   var gamer = {
    id : socket.id,
@@ -53,14 +52,21 @@ io.on('connection', function (socket) {
    color : color[gamerIndex++]
   };
 
-  socket.emit('new gamer', gamer );
-  socket.broadcast.emit( 'new gamer' ,gamer );
+  gamerList[socket.id] = gamer;
 
+
+  /* add a new player */
   socket.on('join' , function (data) {
-   console.log("join" , data);
 
-   socket.emit('new gamer', gamer );
-   socket.broadcast.emit( 'new gamer' ,gamer );
+   console.log("gamer joined");
+   socket.emit( 'new gamer' ,  gamerList );
+   socket.broadcast.emit( 'new gamer' ,  gamerList );
+  });
+
+  socket.on( 'disconnect' , function (data) {
+   console.log(data);
+   delete gamerList[socket.id];
+   socket.broadcast.emit( 'gamer left' ,  socket.id );
   });
 
 });

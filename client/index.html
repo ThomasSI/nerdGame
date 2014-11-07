@@ -17,7 +17,7 @@
 
             <svg id="board" gamer-field width="400" height="400" style="border:1px solid red" >
 
-                <circle ng-repeat="gamer in awesomeThings" cx="{{gamer.posX}}" cy="{{gamer.posY}}" r="15" fill="{{gamer.color}}"  ></circle>
+                <circle ng-repeat="gamer in gamer" cx="{{gamer.posX}}" cy="{{gamer.posY}}" r="15" fill="{{gamer.color}}"  ></circle>
             </svg>
         </div>
 
@@ -38,6 +38,7 @@
 <script src="http://localhost:8080/socket.io/socket.io.js"></script>
 
 <script src="bower_components/angular/angular.js" ></script>
+<script src="bower_components/lodash/dist/lodash.js" ></script>
 <script src="app/app.js" ></script>
 <script src="app/gameCtrl.js" ></script>
 <script src="bower_components/angular-socket-io/socket.min.js" ></script>

@@ -5,29 +5,15 @@
 
 angular.module("app").controller( "gameCtrl" , function($scope , socket){
 
+  $scope.gamer = [];
 
-  //socket.connect();
-
+  /* join the game */
   socket.emit("join" , {});
 
-  socket.on("new game" , function (gamer) {
-    console.log(gamer);
-  });
-
-
-  $scope.awesomeThings = [];
 
 
 
 
-
-  $scope.addThing = function() {
-    if($scope.newThing === '') {
-      return;
-    }
-    $http.post('/api/things', { name: $scope.newThing });
-    $scope.newThing = '';
-  };
 
 
 
@@ -36,5 +22,21 @@ angular.module("app").controller( "gameCtrl" , function($scope , socket){
     console.log(event.charCode);
   };
 
+
+  socket.on("new gamer" , function (gamer) {
+    console.log(gamer);
+    for( key in gamer ){
+      $scope.gamer.push(gamer[key]);
+    }
+  });
+
+  socket.on('gamer left' , function (gamerId) {
+    for( var i = 0; i < $scope.gamer.length; i++   ){
+      if( $scope.gamer[i].id === gamerId ){
+        $scope.gamer.splice(i,1);
+        return;
+      }
+    }
+  })
 
 } );
