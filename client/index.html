@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+</head>
+<body ng-controller="gameCtrl">
+
+<div class="container">
+    <div class="row">
+        <h1 class="page-header">Gamefield:</h1>
+        <div class="col-lg-6">
+
+
+            <svg id="board" gamer-field width="400" height="400" style="border:1px solid red" >
+
+                <circle ng-repeat="gamer in awesomeThings" cx="{{gamer.posX}}" cy="{{gamer.posY}}" r="15" fill="{{gamer.color}}"  ></circle>
+            </svg>
+        </div>
+
+        <div class="col-lg-6">
+            <input  type="text" style="width: 200px;height: 200px; background-color: #000088" ng-keypress="moveGamer($event)"/>
+        </div>
+    </div>
+
+    <p class="input-group">
+        <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
+      </span>
+    </p>
+
+</div>
+
+<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+
+<script src="bower_components/angular/angular.js" ></script>
+<script src="app/app.js" ></script>
+<script src="app/gameCtrl.js" ></script>
+<script src="bower_components/angular-socket-io/socket.min.js" ></script>
+
+
+
+
+</body>
+</html>

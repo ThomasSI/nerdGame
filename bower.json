@@ -1,0 +1,23 @@
+{
+  "name": "angularCatch",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ThomasSI/nerdGame",
+  "authors": [
+    "Thomas Schulz <schulz@seamlessinteraction.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-socket-io": "~0.6.0",
+    "angular": "~1.3.1",
+    "bootstrap": "~3.3.0",
+    "angular-ui": "~0.4.0"
+  }
+}

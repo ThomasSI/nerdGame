@@ -1,3 +1,6 @@
 'use strict';
 
-angular.module('angularCatchApp', [])
+angular.module('app', ['btford.socket-io']).
+    factory('socket', function (socketFactory) {
+      return socketFactory();
+    });
